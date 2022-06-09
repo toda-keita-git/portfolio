@@ -1,0 +1,27 @@
+body{
+    height: 80vh;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+button{
+    border-radius: 50px;
+    font-size: 60px;
+}
+a{
+    text-decoration: none;
+    color: black;
+    padding: 60px;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+}

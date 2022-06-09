@@ -1,0 +1,737 @@
+body{
+   background-image: url(../img/bn.png);
+   line-height: 1.8rem;
+   font-size: 16px;
+}
+header{
+  width: 100%;
+  height: 100px;
+}
+#kodawari,#menu,#news,#ninki,#acess,#otoiawase{
+  padding-top: 120px;
+  margin-top: -120px;
+}
+.nav{
+  width: 100%;
+  height: auto;
+  position: fixed;
+  z-index: 5;
+}
+.ul{
+ height: 100px;
+ display: flex;
+ flex-wrap: nowrap;
+ text-align: center;
+ justify-content: center;
+ align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.li{
+ display: flex;
+ text-align: center;
+ justify-content: center;
+ align-items: center;
+  width: 13%;
+  height: 100%;
+  color: white;
+  background-color: black;
+  opacity: 0.9;
+}
+.logo{
+ width: 30.2%;
+ height: 100%;
+ background-color: white;
+}
+.logo1{
+ width: 100%;
+ height: 100%;
+}
+.title{
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/ramen.png);
+  background-repeat: no-repeat;
+  background-size:contain;
+  padding-bottom: 50%;
+  margin-bottom: 10%;
+}
+.title_ramen{
+   position: absolute;
+   width: auto;
+   width: 48%;
+   height: auto;
+}
+.wrap-img{
+   display:flex;
+   justify-content: center;
+   width: 100%;
+   height: auto;
+   z-index: 0;
+   visibility: middle;
+   box-sizing: border-box;
+   transition: all .3s;
+}
+/*疑似要素:before,:after*/
+/*html上には無いが、要素の前後に要素があるようにできる*/
+/*htmlを汚さずにデザインのための要素を付けることが可能*/
+.wrap-img::before,
+.wrap-img::after{   
+   position: absolute;
+   /* 画像より手前に表示するため   */
+   z-index: 10;
+   display: block;
+   content: '';
+   box-sizing: border-box;
+   top: 0;
+   /* 親要素の半分の大きさの扉のため*/
+   width: 50%;
+   height: 100%;
+   /* 0.1秒待った後に0.3秒かけてwidthが変化する(扉が閉まる)   */
+   transition: width 300000s ease 300000s;
+}
+/*左側の扉となる要素*/
+.wrap-img::before{
+   left: 0;
+   background-image: url(../img/husumaL.jpg);
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+}
+/*右側の扉となる要素*/
+.wrap-img::after{
+   right: 0;
+   background-image: url(../img/husumaR.jpg);
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+}
+.wrap-img:hover::before,
+.wrap-img:hover::after{
+   cursor: pointer;
+   /*カーソルを重ねるとwidthを0にする(扉が開く)*/
+   width: 0;
+   /* 0秒待った後に0.3秒かけてwidthが変化する   */
+   transition: width 4s ease 0.5s;
+}
+img{
+   box-sizing: border-box;
+   display: block;
+}
+/*img{
+    カーソルを重ねていないときの画像は小さく   
+   transform: scale(0.8, 0.8);
+   transform: all .1s;
+}
+img:hover{
+   cursor: pointer;
+     カーソルを重ねると画像は大きくなる   
+   transform: scale(1.0, 1.0);
+   transition: transform .2s ease .1s;
+}*/
+
+article{
+  margin-bottom: 10%;
+}
+h1{
+  background-image: url(../img/umeda_haikei.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.logo_h1{
+  width: 40%;
+  height: auto;
+  margin: 100px auto;
+}
+h2{
+  padding: 20px 0;
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 3% auto;
+}
+.kodawari{
+  width: 80vw;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: auto;
+}
+.kodawari1{
+  width: 30%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+}
+h3{
+  font-size: 1.6rem;
+  margin: auto;
+  margin-bottom: 5%;
+}
+.hexclip{
+  order: -1;
+}
+.hexclip img{
+  width: 80%;
+  height: 80%;
+  margin: auto;
+}
+.menuran{
+  width: 80%;
+  margin: auto;
+}
+
+
+/*tabの形状*/
+.tab{
+	display: flex;
+	flex-wrap: wrap;
+}
+.tab li a{
+	display: block;
+	background:#ddd;
+	margin:0 2px;
+	padding:10px 20px;
+}
+/*liにactiveクラスがついた時の形状*/
+.tab li.active a{
+	background:#fff;
+}
+
+
+/*エリアの表示非表示と形状*/
+.area {
+	display: none;/*はじめは非表示*/
+	opacity: 0;/*透過0*/
+	background: #fff;
+	padding:50px 20px;
+}
+
+/*areaにis-activeというクラスがついた時の形状*/
+.area.is-active {
+    display: block;/*表示*/
+    animation-name: displayAnime;/*ふわっと表示させるためのアニメーション*/
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes displayAnime{
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+.bgDU{
+	position:relative;/*テキストの基点となる位置を定義*/
+}
+
+.bgDU span.mask{
+	position:relative;/*背景色の基点となる位置を定義*/
+    display: block;
+    line-height: 0;/*行の高さを0にする*/
+    overflow: hidden;/*拡大してはみ出る要素を隠す*/
+    width: 100%;
+}
+
+.bgDU span img{
+  width: 100%;
+  height: auto;
+}
+
+.bgDU span.mask::before{
+	content:"";
+	position: absolute;
+	z-index: 2;
+	left:0;
+	top:0;
+	opacity:0;/*透過0*/
+	transition: .3s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+    transform: translateY(100%);
+	background:#333;/*背景色*/
+	width:100%;
+	height: 100%;	
+}
+
+.bgDU:hover span.mask::before{/*hoverした時の変化*/
+	opacity:0.5;/*透過なしに変化*/
+	transform: translateY(0);
+}
+
+.bgDU span.cap{/*画像の上のテキスト*/
+	position: absolute;
+	opacity:0;/*透過0*/
+	transition: .5s ease-in-out;/*移り変わる速さを変更したい場合はこの数値を変更*/
+	z-index:3;/*テキストを前面に出す*/
+	top: 50%;
+    left: 50%;
+	transform: translate(-50%,-50%);/*テキストの位置中央指定*/
+	color: #fff;/*テキストの色を変えたい場合はここを修正*/
+    line-height: 1.5;/*行の高さを1.5にする*/
+}
+
+.bgDU:hover span.cap{/*hoverした時の変化*/
+	opacity:1;/*透過なしに変化*/
+}
+.ramen_ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.ramen_ul ul{
+  width: 48%;
+  margin-bottom: 50px;
+}
+.ramen_ul ul li{
+  margin-bottom: 10px;
+}
+.ramen_ul li:first-child{
+  float: left;
+  font-size: 18px;
+}
+.ramen_ul li:nth-child(2){
+  text-align: right;
+}
+#arakaruto ul{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+#otumami ul{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+#topping ul{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+#dorink ul{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+#arakaruto ul li{
+  padding-bottom: 10px;
+}
+#otumami ul li{
+  padding-bottom: 10px;
+}
+#topping ul li{
+  padding-bottom: 10px;
+}
+#dorink ul li{
+  padding-bottom: 10px;
+}
+.dorink_setumei{
+  width: 60%;
+  margin: auto;
+}
+.money{
+  float: right;
+  padding-left: 30px;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;}
+.info {
+  margin: auto auto;
+  padding: 0 1.5em;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 1em;
+  line-height: 1.3;
+  color: #444;
+  overflow: auto;
+  width: 60%;
+  height: 40vh;
+  background-color: #fcfcfc;}
+.info dl {
+  width: 100%;
+  margin: auto;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+}
+.info dt {
+  padding-bottom: 0.5em;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.info dt a span{
+  margin-left: 100px;
+  font-size: 20px;
+}
+@media screen and (min-width: 800px) {
+.info dt {
+  clear: left;
+  float: left;
+}
+.info dd {
+  margin-left: 400px;
+}
+}
+.news_img{
+  margin-bottom: 20px;
+}
+#ninki{
+  margin-bottom: 1%;
+}
+.ninki{
+  width: 75%;
+  height: auto;
+  margin: auto;
+  margin-bottom: 50px;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+.hangaku{
+  font-size: 28px;
+  color: red;
+}
+.box_step05 {
+  width: 80%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 767px) {
+  .box_step05 {
+    width: 75%;
+  }
+}
+.box_step05 ul {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.box_step05 ul li {
+  position: relative;
+  text-align: center;
+  background: goldenrod;
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 768px) {
+  .box_step05 ul li {
+    width: 33.33333%;
+  }
+}
+@media print {
+  .box_step05 ul li {
+    width: 33.33333%;
+  }
+}
+.ie8 .box_step05 ul li {
+  width: 33.33333%;
+}
+@media only screen and (max-width: 767px) {
+  .box_step05 ul li {
+    display: none;
+  }
+}
+.box_step05 ul li:nth-child(n+2) {
+  margin-left: 2.5%;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .box_step05 ul li:nth-child(n+2) {
+    margin-left: 5%;
+  }
+}
+.box_step05 ul li:nth-child(n+2):before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  border: 0 solid goldenrod;
+  border-width: 24.9px 20px;
+  width: 0;
+  height: 0;
+  left: -20px;
+  border-left-color: transparent;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.box_step05 ul li span {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  display: block;
+}
+.box_step05 ul li span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  border: 0 solid  goldenrod;
+  border-width: 24.9px 20px;
+  width: 0;
+  height: 0;
+  left: 100%;
+  border-color: transparent;
+  border-left-color:goldenrod;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.box_step05 ul li.active {
+  background: goldenrod;
+}
+@media only screen and (max-width: 767px) {
+  .box_step05 ul li.active {
+    display: block;
+    width: 100%;
+  }
+}
+.box_step05 ul li{
+  color: white;
+}
+.box_step05 ul li.active span:after {
+  border-left-color:goldenrod;
+}
+.nagare{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 80%;
+  gap: 30px;
+}
+.nagare li{
+  width:33.33333%;
+  height: auto;
+  background-color: #fff;
+}
+.nagare li p{
+  margin: 20px;
+}
+.nagare li img{
+  width: 100%;
+  height: auto;
+} 
+
+.exampleClass {
+	padding: 12px 24px;
+    background-Color: white;
+    color: black;
+    border-Radius: 7px;
+    transition: transform 250ms cubic-bezier(.2,.8,.4,1);
+    border: solid black;
+    padding: 5px;
+  }
+
+.exampleClass:hover {
+	transform: scale(1.10);
+  }
+
+.exampleClass:active {
+	transform: scale(0.9);
+}
+.info-list{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/*全て共通：hideエリアをはじめは非表示*/
+.hide-area{
+	display: none;
+}
+
+/*全て共通：モーダルのボタンの色を変更したい場合*/
+.modaal-close:after, 
+.modaal-close:before{
+	background:#ccc;
+}
+
+.modaal-close:focus:after,
+.modaal-close:focus:before,
+.modaal-close:hover:after,
+.modaal-close:hover:before{
+	background:#666;
+}
+
+.acess{
+  width: 80%;
+  height: auto;
+  margin: auto;
+  background-color: white;
+}
+.tizu{
+  width: 100%;
+  height: 500px;
+}
+.acess_dl{
+  width: 100%;
+  padding: 5%;
+}
+.acess_risuto{
+  border-bottom: dotted black;
+}
+#acess_risuto{
+  border-top:  dotted black;
+}
+.risuto{
+  float: left;
+  padding-top: 10px;
+}
+.acess_dd{
+  width: 70%;
+  margin-left: 30%;
+  padding-top: 10px;
+}
+.otoiawase{
+  width: 80%;
+  height: auto;
+  margin: auto;
+  background-color: white;
+  padding: 3% 0 3% 0;
+}
+.otoiawase_dl{
+  flex-wrap: wrap;
+  padding-left: 3%;
+}
+.otoiawase_div{
+  display: flex;
+  margin-bottom: 1%;
+}
+.otoiawase_div_naiyou{
+  display: flex;
+  margin-bottom: 1%;
+}
+.otoiawase_div_name{
+  display: flex;
+  margin-bottom: 1%;
+}
+.otoiawase_dt_name{
+  width: 25%;
+  border-top: dotted black;
+  padding-top: 0.5%;
+}
+.otoiawase_dt{
+  width: 25%;
+  border-top: dotted black;
+  padding-top: 0.5%;
+}
+.otoiawase_dt_syurui{
+  width: 25%;
+}
+.otoiawase_dt_contens{
+  width: 25%;
+  height: 14vh;
+  border-top: dotted black;
+  padding-top: 0.5%;
+  margin-bottom: 5px;
+  border-bottom: dotted black;
+}
+.otoiawase_tagu{
+  padding: 2px;
+  float: right;
+  background-color: rgb(252, 33, 33);
+  color: white;
+  border-radius: 15%;
+}
+.otoiawase_tagu1{
+  padding: 2px;
+  float: right;
+  background-color: rgb(78, 78, 196);
+  color: white;
+  border-radius: 15%;
+}
+.otoiawase_dd{
+  width: 70%;
+  float: right;
+  height: 50%;
+}
+.otoiawase_dd_syurui{
+  display: flex;
+  width: 70%;
+  margin-top: 7px;
+}
+input,textarea{
+  padding: 3px;
+  width: 100%;
+  border: solid black;
+  margin-left: 5%;
+}
+#naiyou_syuzai{
+ width: 5%; 
+ margin-top: 7px;
+}
+#naiyou_ippan{
+  width: 5%;
+  margin-top: 7px;
+}
+.otoiawase_input{
+  display: block;
+  height: 100px;
+  overflow:scroll;
+}
+.date{
+  display: none;
+}
+.button{
+  text-align: right;  
+  margin-top: 3%;
+  margin-right: 3%;
+}
+button{
+  width: 100%;
+}
+.error{
+  margin-left: 5%;
+  color: red;
+}
+.error1{
+  margin-left: 5%;
+  color: red;
+}
+.num_error{
+  color: red;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+a.btn--orange {
+  height: 50px;
+  color: #fff;
+  background-color: #eb6100;
+  border-bottom: 5px solid #b84c00;
+  padding: 5px 30px;
+}
+a.btn--orange:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: #f56500;
+  border-bottom: 2px solid #b84c00;
+}
+a.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+footer{
+  background-color: black;
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.sns{
+  width: 22%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.icon{
+  width: 50px;
+  height: 50px;
+  margin: auto;
+}
+.porisi{
+  color:#fff;
+  margin-top: 10px;
+  margin-left: 10px;
+}
